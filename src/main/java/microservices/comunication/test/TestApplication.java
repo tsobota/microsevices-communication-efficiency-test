@@ -1,5 +1,6 @@
 package microservices.comunication.test;
 
+import microservices.comunication.test.http.HttpServiceReceiver;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import microservices.comunication.test.http.HttpServiceTransmitter;
@@ -29,8 +30,10 @@ public class TestApplication {
 
         if (serverName.equals("registration") || serverName.equals("reg")) {
             RegistrationServer.main(args);
-        } else if (serverName.equals("accounts")) {
+        } else if (serverName.equals("http_transmitter")) {
             HttpServiceTransmitter.main(args);
+        } else if (serverName.equals("http-receiver")) {
+            HttpServiceReceiver.main(args);
         } else {
             System.out.println("Unknown server type: " + serverName);
             usage();
