@@ -1,9 +1,9 @@
 package microservices.comunication.test;
 
-import microservices.comunication.test.http.HttpServiceReceiver;
+import microservices.comunication.test.http.receiver.HttpServiceReceiver;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import microservices.comunication.test.http.HttpServiceTransmitter;
+import microservices.comunication.test.http.transmitter.HttpServiceTransmitter;
 import microservices.comunication.test.registration.RegistrationServer;
 
 @SpringBootApplication
@@ -43,7 +43,7 @@ public class TestApplication {
     protected static void usage() {
         System.out.println("Usage: java -jar ... <server-name> [server-port]");
         System.out.println(
-                "     where server-name is 'reg', 'registration', " + "'accounts' or 'web' and server-port > 1024");
+                "     where server-name is 'reg', 'registration', " + "'http_transmitter' or 'http-receiver' and server-port > 1024");
     }
 
 }

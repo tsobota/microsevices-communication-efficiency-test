@@ -1,16 +1,15 @@
-package microservices.comunication.test.http;
+package microservices.comunication.test.http.transmitter;
+
+import java.util.logging.Logger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-import java.util.logging.Logger;
-
 @EnableAutoConfiguration
 @EnableDiscoveryClient
-public class HttpServiceReceiver {
-
-    protected Logger logger = Logger.getLogger(HttpServiceReceiver.class.getName());
+public class HttpServiceTransmitter {
+    protected Logger logger = Logger.getLogger(HttpServiceTransmitter.class.getName());
 
     /**
      * Run the application using Spring Boot and an embedded servlet engine.
@@ -21,8 +20,8 @@ public class HttpServiceReceiver {
     public static void main(String[] args) {
         // Tell server to look for accounts-server.properties or
         // accounts-server.yml
-        System.setProperty("spring.config.name", "http-receiver-server");
+        System.setProperty("spring.config.name", "http-transmitter-server");
 
-        SpringApplication.run(HttpServiceReceiver.class, args);
+        SpringApplication.run(HttpServiceTransmitter.class, args);
     }
 }
