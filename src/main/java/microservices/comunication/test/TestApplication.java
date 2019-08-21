@@ -1,12 +1,13 @@
 package microservices.comunication.test;
 
-import microservices.comunication.test.http.receiver.HttpServiceReceiver;
+import java.io.IOException;
+
+import microservices.comunication.test.services.http.receiver.HttpServiceReceiver;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import microservices.comunication.test.http.transmitter.HttpServiceTransmitter;
-import microservices.comunication.test.registration.RegistrationServer;
+import microservices.comunication.test.services.http.transmitter.HttpServiceTransmitter;
+import microservices.comunication.test.services.registration.RegistrationServer;
 
-@SpringBootApplication
 public class TestApplication {
 
     public static void main(String[] args) {
@@ -34,6 +35,8 @@ public class TestApplication {
             HttpServiceTransmitter.main(args);
         } else if (serverName.equals("http-receiver")) {
             HttpServiceReceiver.main(args);
+        } else if (serverName.equals("all")) {
+            runAll();
         } else {
             System.out.println("Unknown server type: " + serverName);
             usage();
@@ -44,6 +47,16 @@ public class TestApplication {
         System.out.println("Usage: java -jar ... <server-name> [server-port]");
         System.out.println(
                 "     where server-name is 'reg', 'registration', " + "'http_transmitter' or 'http-receiver' and server-port > 1024");
+    }
+
+    private static void runAll() {
+        try {
+            Runtime.getRuntime().exec("java -jar C:\\Users\\tkso\\private\\idea-projects\\microsevices-communication-efficiency-test\\targettest-0.0.1-SNAPSHOT.jar reg");
+            Runtime.getRuntime().exec("java -jar C:\\Users\\tkso\\private\\idea-projects\\microsevices-communication-efficiency-test\\targettest-0.0.1-SNAPSHOT.jar http_transmitter");
+            Runtime.getRuntime().exec("java -jar C:\\Users\\tkso\\private\\idea-projects\\microsevices-communication-efficiency-test\\targettest-0.0.1-SNAPSHOT.jar http-receiver");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

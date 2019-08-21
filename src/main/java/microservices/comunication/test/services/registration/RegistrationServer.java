@@ -1,4 +1,4 @@
-package microservices.comunication.test.registration;
+package microservices.comunication.test.services.registration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

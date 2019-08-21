@@ -1,12 +1,14 @@
-package microservices.comunication.test.http.receiver;
+package microservices.comunication.test.services.http.receiver;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
 
 import java.util.logging.Logger;
 
-@EnableAutoConfiguration
+@SpringBootApplication
+//@ComponentScan(basePackages="microservices.comunication.test.http.receiver")
 @EnableDiscoveryClient
 public class HttpServiceReceiver {
 
