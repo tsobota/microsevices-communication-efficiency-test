@@ -3,12 +3,12 @@ package microservices.comunication.test.services.http.receiver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.logging.Logger;
 
 @SpringBootApplication
-//@ComponentScan(basePackages="microservices.comunication.test.http.receiver")
+@ComponentScan(basePackages="microservices.comunication.test.http.receiver")
 @EnableDiscoveryClient
 public class HttpServiceReceiver {
 
