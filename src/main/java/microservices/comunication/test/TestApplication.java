@@ -2,6 +2,8 @@ package microservices.comunication.test;
 
 import java.io.IOException;
 
+import microservices.comunication.test.services.amqp.receiver.AmqpServiceReceiver;
+import microservices.comunication.test.services.amqp.transmitter.AmqpServiceTransmitter;
 import microservices.comunication.test.services.http.receiver.HttpServiceReceiver;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -31,12 +33,14 @@ public class TestApplication {
 
         if (serverName.equals("registration") || serverName.equals("reg")) {
             RegistrationServer.main(args);
-        } else if (serverName.equals("http_transmitter")) {
+        } else if (serverName.equals("ht")) {
             HttpServiceTransmitter.main(args);
-        } else if (serverName.equals("http-receiver")) {
+        } else if (serverName.equals("hr")) {
             HttpServiceReceiver.main(args);
-        } else if (serverName.equals("all")) {
-            runAll();
+        } else if (serverName.equals("ar")) {
+            AmqpServiceReceiver.main(args);
+        } else if (serverName.equals("at")) {
+            AmqpServiceTransmitter.main(args);
         } else {
             System.out.println("Unknown server type: " + serverName);
             usage();
@@ -46,17 +50,6 @@ public class TestApplication {
     protected static void usage() {
         System.out.println("Usage: java -jar ... <server-name> [server-port]");
         System.out.println(
-                "     where server-name is 'reg', 'registration', " + "'http_transmitter' or 'http-receiver' and server-port > 1024");
+                "     where server-name is 'reg', 'registration', " + "'ht', 'hr', 'ar', 'at' and server-port > 1024");
     }
-
-    private static void runAll() {
-        try {
-            Runtime.getRuntime().exec("java -jar C:\\Users\\tkso\\private\\idea-projects\\microsevices-communication-efficiency-test\\targettest-0.0.1-SNAPSHOT.jar reg");
-            Runtime.getRuntime().exec("java -jar C:\\Users\\tkso\\private\\idea-projects\\microsevices-communication-efficiency-test\\targettest-0.0.1-SNAPSHOT.jar http_transmitter");
-            Runtime.getRuntime().exec("java -jar C:\\Users\\tkso\\private\\idea-projects\\microsevices-communication-efficiency-test\\targettest-0.0.1-SNAPSHOT.jar http-receiver");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
